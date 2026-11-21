@@ -23,9 +23,9 @@ When a new lint-staged version changes behavior, we update the pages and this ta
 
 ## Found an error?
 
-- An error on this site: open an issue in [revdoku-open-docs/open-docs-lint-staged](https://github.com/revdoku-open-docs/open-docs-lint-staged/issues).
+- An error or a missing topic on this site: open an issue in [revdoku-open-docs/open-docs-lint-staged](https://github.com/revdoku-open-docs/open-docs-lint-staged/issues/new/choose).
 - A bug in lint-staged itself: open an issue in [lint-staged/lint-staged](https://github.com/lint-staged/lint-staged/issues). The lint-staged maintainers do not read the issues of this site.
-
+- A question about how to use lint-staged: ask on [Stack Overflow](https://stackoverflow.com/questions/tagged/lint-staged) with the `lint-staged` tag.
 ## Who publishes this site
 
 Revdoku writes and hosts this site as part of its open docs program. The program publishes community docs for open-source projects that have no docs website. Revdoku makes docs portals with search and an AI support agent.

@@ -1,0 +1,27 @@
+name: Error or missing topic in these docs
+description: A page on open-docs-lint-staged.revdoku.net is wrong, unclear or out of date, or a topic is missing.
+title: "Docs: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        These are unofficial community docs. The lint-staged project does not read these issues. For a bug in lint-staged itself, go back and choose "Bug in lint-staged".
+  - type: input
+    id: page
+    attributes:
+      label: Page
+      description: The URL of the page. Leave it empty for a missing topic.
+      placeholder: https://open-docs-lint-staged.revdoku.net/cli/
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is wrong or missing
+      description: What the page says and what is correct, or which topic you looked for.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: lint-staged version
+      description: The output of `npx lint-staged --version`, if it matters.
+      placeholder: 17.6.1

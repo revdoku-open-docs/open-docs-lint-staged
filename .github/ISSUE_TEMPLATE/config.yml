@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Bug in lint-staged
+    url: https://github.com/lint-staged/lint-staged/issues/new/choose
+    about: lint-staged itself does not work as its docs say. Report it to the lint-staged project. Search its issues first. This repository is only for the community docs.
+  - name: Question about how to use lint-staged
+    url: https://stackoverflow.com/questions/tagged/lint-staged
+    about: Ask on Stack Overflow with the lint-staged tag. Also try Ask on https://open-docs-lint-staged.revdoku.net first.
