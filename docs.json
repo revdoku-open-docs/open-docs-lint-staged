@@ -1,0 +1,48 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "name": "lint-staged community docs",
+  "description": "Unofficial community docs for lint-staged 17.6, the tool that runs formatters and linters on the files that you stage in Git. The lint-staged project does not maintain this site.",
+  "favicon": "/favicon.svg",
+  "colors": { "primary": "#0e7490" },
+  "banner": {
+    "content": "Community docs for lint-staged 17.6. Unofficial: the [lint-staged project](https://github.com/lint-staged/lint-staged) does not maintain this site. [About these docs](/about)",
+    "type": "info"
+  },
+  "navbar": {
+    "links": [
+      { "label": "lint-staged on GitHub", "href": "https://github.com/lint-staged/lint-staged" },
+      { "label": "Releases", "href": "https://github.com/lint-staged/lint-staged/releases" }
+    ]
+  },
+  "navigation": {
+    "groups": [
+      { "group": "Get started", "pages": ["index", "getting-started", "how-it-works"] },
+      { "group": "Configure", "pages": ["configuration", "globs", "tasks", "js-config"] },
+      {
+        "group": "Guides",
+        "pages": ["guides/recipes", "guides/monorepo", "guides/ci", "guides/eslint-ignored-files", "guides/typescript-tsc"]
+      },
+      { "group": "Reference", "pages": ["cli", "node-api"] },
+      { "group": "Help", "pages": ["troubleshooting", "migration", "about"] }
+    ]
+  },
+  "footer": {
+    "links": [
+      {
+        "header": "These docs",
+        "items": [
+          { "label": "About these docs", "href": "/about" },
+          { "label": "Report an error in these docs", "href": "https://github.com/revdoku-open-docs/lint-staged/issues" }
+        ]
+      },
+      {
+        "header": "lint-staged",
+        "items": [
+          { "label": "Source code", "href": "https://github.com/lint-staged/lint-staged" },
+          { "label": "Issues", "href": "https://github.com/lint-staged/lint-staged/issues" },
+          { "label": "npm package", "href": "https://www.npmjs.com/package/lint-staged" }
+        ]
+      }
+    ]
+  }
+}

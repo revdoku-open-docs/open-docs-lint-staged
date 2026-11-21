@@ -1,0 +1,15 @@
+{
+  "ask": {
+    "welcome": "Ask a question about lint-staged. These are unofficial community docs. Report lint-staged bugs on its GitHub page.",
+    "questions": [
+      "How do I set up lint-staged with Husky?",
+      "How do I run ESLint and Prettier on staged files?",
+      "How do I run tsc without passing file names?",
+      "How do I use lint-staged in a monorepo?",
+      "How do I run lint-staged in CI?",
+      "How do I get my changes back after a failed run?",
+      "Why did lint-staged stage files that I did not stage?",
+      "Which Node.js and Git versions do I need?"
+    ]
+  }
+}

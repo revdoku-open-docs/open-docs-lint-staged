@@ -1,0 +1,92 @@
+---
+title: How it works
+description: The steps of a lint-staged run - the backup stash, hidden unstaged changes, the tasks, staged changes and the revert after an error.
+---
+
+lint-staged changes the state of your Git repository while it runs. This page tells what it does in each step, so that you know where your changes are if a run stops.
+
+## The steps of a run
+
+With the default options, a run has these steps:
+
+1. Backup. lint-staged saves the full state of your files in a Git stash with `git stash create` and `git stash store`. The stash has the name `lint-staged automatic backup`. Your files stay in the working tree. Untracked files are not in the backup, unless you use `--hide-all`.
+2. Hide unstaged changes. A partially staged file has staged changes and unstaged changes. lint-staged saves the unstaged changes of these files in a patch file in the `.git` folder. Then it removes them from the working tree, so that the tasks see only the staged version.
+3. Run the tasks. lint-staged runs the configured commands on the staged files that match each glob pattern.
+4. Stage the changes. lint-staged stages all changes that the tasks made to tracked files. This includes files that were not staged and files that no glob matched, for example when a task runs `prettier --write .`.
+5. Restore the hidden changes. lint-staged applies the patch file from step 2 again.
+6. Clean up. lint-staged deletes the patch file and drops the backup stash.
+
+If you interrupt a run, the backup stash stays until the last step. You can get your changes back from it. See [Get lost changes back](#get-lost-changes-back).
+
+<Note>
+Step 4 changed in lint-staged 17.6.0. Before that version, lint-staged staged only the changes to files that were staged before the run. If a task edits a file that has unstaged changes, those changes are now staged too. To keep them out of the commit, use `--hide-unstaged`.
+</Note>
+
+## When a task fails
+
+A task fails when its command exits with a code that is not 0. Then lint-staged:
+
+1. Stops the other tasks, unless you use `--continue-on-error`.
+2. Skips step 4.
+3. Resets the index with `git reset` and restores the original state from the backup stash.
+4. Shows the output of the failed task.
+5. Exits with code 1. The pre-commit hook fails, and Git does not make the commit.
+
+```text
+✖ Failed to run tasks for staged files!
+↓ Skipped staging changes from tasks…
+⋯ Reverting to original state because of errors…
+✔ Done reverting to original state!
+```
+
+## When the tasks undo all staged changes
+
+A formatter can undo a change, for example when you only added spaces. If no staged change is left after the tasks, lint-staged stops the commit:
+
+```text
+⚠ lint-staged prevented an empty git commit.
+  Use the --allow-empty option to continue, or check your task configuration
+```
+
+To allow the empty commit, run lint-staged with `--allow-empty`.
+
+## Get lost changes back
+
+If a run stops and some changes are missing, find the backup stash:
+
+```bash
+git stash list --format="%h %s"
+```
+
+The output shows a hash and the stash name:
+
+```text
+7b8beaa On main: lint-staged automatic backup
+```
+
+Apply the stash with its hash. The `--index` option also restores what was staged:
+
+```bash
+git apply --index 7b8beaa
+```
+
+When a run fails, lint-staged can keep the backup stash. If you do not need it, remove it with `git stash drop`.
+
+## Options that change the steps
+
+| Option | Effect on the steps |
+| --- | --- |
+| `--no-stash` | No backup stash and no restore after an error. The changes from the tasks stay in the index. Step 2 still runs. |
+| `--no-revert` | No restore from the backup after an error. The changes from the tasks go into the index. |
+| `--fail-on-changes` | If a task changes a tracked file, the run fails with exit code 1. The changes stay in the working tree. Implies `--no-revert`. |
+| `--no-hide-partially-staged` | No step 2. The unstaged changes of partially staged files go into the commit. |
+| `--hide-unstaged` | Step 2 hides the unstaged changes of all tracked files. |
+| `--hide-all` | Step 2 hides all unstaged changes and the untracked files. The backup stash includes the untracked files. |
+| `--diff` | Gets the file list from a `git diff` that you choose. Implies `--no-stash`. |
+| `--all` | Runs the tasks on all tracked files. Implies `--no-stash` and `--allow-empty`. |
+
+See [CLI flags](/cli) for each option.
+
+## Do not run two instances in one working tree
+
+Some Git commands lock the repository. Do not run two lint-staged processes at the same time in the same working tree, because this can cause data loss. Since 17.6.0, each run uses a patch file with its own name. Thus runs in different Git worktrees at the same time are safe.

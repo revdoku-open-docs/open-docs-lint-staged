@@ -1,0 +1,67 @@
+---
+title: lint-staged community docs
+description: Run formatters, linters and other tools on the files that you stage in Git, before each commit. Unofficial community docs for lint-staged 17.6.
+---
+
+lint-staged runs your formatters, linters and other tools on the files that you stage in Git, before each commit. It does not run them on the full project. Thus the check before a commit is fast, and it shows only the errors in the files that you changed.
+
+These are community docs for lint-staged 17.6. They are unofficial: the [lint-staged project](https://github.com/lint-staged/lint-staged) does not maintain this site. The pages are written from the lint-staged source code, and each example was tested with lint-staged 17.6.1. For the official text, read the [lint-staged README](https://github.com/lint-staged/lint-staged#readme). See [About these docs](/about).
+
+```text
+$ git commit
+
+⋯ Backing up original state…
+✔ Done backing up original state (b747171)!
+⋯ Running tasks for staged files…
+    *.js — 1 file
+      ⋯ prettier --write
+
+✔ prettier --write
+
+✔ Done running tasks for staged files!
+⋯ Staging changes from tasks…
+✔ Done staging changes from tasks!
+⋯ Cleaning up temporary files…
+✔ Done cleaning up temporary files!
+```
+
+<CardGroup cols={2}>
+  <Card title="Getting started" href="/getting-started">
+    Install lint-staged, add a pre-commit hook and make your first commit.
+  </Card>
+  <Card title="Configuration" href="/configuration">
+    Configuration files, the search order and the format of a task.
+  </Card>
+  <Card title="Recipes" href="/guides/recipes">
+    Configurations for Prettier, ESLint, Stylelint, tests and images.
+  </Card>
+  <Card title="CLI flags" href="/cli">
+    All flags of lint-staged 17.6, with their defaults.
+  </Card>
+  <Card title="Monorepos" href="/guides/monorepo">
+    One configuration file for each package.
+  </Card>
+  <Card title="Run in CI" href="/guides/ci">
+    Check the files that a pull request changes.
+  </Card>
+  <Card title="How it works" href="/how-it-works">
+    The backup stash, hidden changes and what happens when a task fails.
+  </Card>
+  <Card title="Troubleshooting" href="/troubleshooting">
+    Error messages, hook output and how to get lost changes back.
+  </Card>
+</CardGroup>
+
+## Requirements
+
+| Item | Requirement for lint-staged 17.6 |
+| --- | --- |
+| Node.js | 22.22.1 or later |
+| Git | 2.32.0 or later |
+| Repository | At least one commit, for the backup stash. See [How it works](/how-it-works). |
+
+lint-staged makes sure that the Git version is 2.32.0 or later before each run. If Git is older, lint-staged stops with an error.
+
+## Related tools
+
+If you only want to check the staged files for errors, and not change them, the lint-staged team also has a shell script: [lint-staged.sh](https://github.com/lint-staged/lint-staged.sh).

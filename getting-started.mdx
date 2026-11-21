@@ -1,0 +1,86 @@
+---
+title: Getting started
+description: Install lint-staged, add a pre-commit hook with Husky, configure a first task and make a commit.
+---
+
+This page sets up lint-staged with Husky and Prettier in a Node.js project. Husky is a tool that adds Git hooks to a project. A Git hook is a script that Git runs at a step such as a commit.
+
+<Steps>
+  <Step title="Install lint-staged">
+    In the root folder of your project, run this command:
+
+    ```bash
+    npm install --save-dev lint-staged
+    ```
+
+    With pnpm, Yarn or Bun, use the add command of that package manager.
+  </Step>
+  <Step title="Install the tools that the tasks run">
+    lint-staged runs other tools. It does not format or lint code itself. This example uses Prettier:
+
+    ```bash
+    npm install --save-dev prettier
+    ```
+  </Step>
+  <Step title="Add a configuration">
+    Add a `lint-staged` object to `package.json`. Each key is a glob pattern, and each value is a command:
+
+    ```json
+    {
+      "lint-staged": {
+        "*.{js,ts,css,md}": "prettier --write"
+      }
+    }
+    ```
+
+    lint-staged adds the paths of the matching staged files to the end of the command. See [Configuration](/configuration) for the other file formats.
+  </Step>
+  <Step title="Install Husky">
+    ```bash
+    npm install --save-dev husky
+    ```
+
+    Then run the Husky setup command:
+
+    ```bash
+    npx husky init
+    ```
+
+    This command makes the file `.husky/pre-commit` and adds the script `"prepare": "husky"` to `package.json`. The new hook runs `npm test`.
+  </Step>
+  <Step title="Run lint-staged in the pre-commit hook">
+    Replace the content of `.husky/pre-commit` with this line:
+
+    ```shell
+    npx lint-staged
+    ```
+
+    Do not add file paths to this command. lint-staged finds the staged files itself.
+  </Step>
+  <Step title="Commit the setup">
+    Commit `package.json`, `package-lock.json` and the `.husky` folder. Then the hook works for each person who runs `npm install` in the project.
+  </Step>
+  <Step title="Test it">
+    Change a file, stage it with `git add` and run `git commit`. lint-staged runs Prettier on the staged file and adds the formatted file to the commit.
+  </Step>
+</Steps>
+
+## Other hook managers
+
+Husky is one way to share the hook with your team. Other hook managers, such as simple-git-hooks and Lefthook, also work. Make sure that the pre-commit hook runs `npx lint-staged`.
+
+## If the repository has no commits
+
+lint-staged keeps a backup of your changes in a Git stash before it runs the tasks. A stash needs at least one commit. If the repository has no commits, lint-staged shows this warning and runs without a backup:
+
+```text
+⚠ Skipping backup because there’s no initial commit yet. This might result in data loss.
+```
+
+Make the first commit before you add lint-staged.
+
+## Next steps
+
+- [Recipes](/guides/recipes) for ESLint, Stylelint, tests and images.
+- [How it works](/how-it-works) to learn what lint-staged does with your files.
+- [CLI flags](/cli) to change the default behavior.
