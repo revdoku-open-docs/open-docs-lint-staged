@@ -32,7 +32,7 @@
         "header": "These docs",
         "items": [
           { "label": "About these docs", "href": "/about" },
-          { "label": "Report an error in these docs", "href": "https://github.com/revdoku-open-docs/lint-staged/issues" }
+          { "label": "Report an error in these docs", "href": "https://github.com/revdoku-open-docs/open-docs-lint-staged/issues" }
         ]
       },
       {

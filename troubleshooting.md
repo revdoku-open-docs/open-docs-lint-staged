@@ -118,4 +118,4 @@ Do not run lint-staged twice at the same time in one working tree, for example f
 
 ## Still a problem?
 
-Search the [lint-staged issues](https://github.com/lint-staged/lint-staged/issues). If you found a bug in lint-staged, report it there with the output of `npx lint-staged --debug`. If a page on this site is wrong, [report it here](https://github.com/revdoku-open-docs/lint-staged/issues).
+Search the [lint-staged issues](https://github.com/lint-staged/lint-staged/issues). If you found a bug in lint-staged, report it there with the output of `npx lint-staged --debug`. If a page on this site is wrong, [report it here](https://github.com/revdoku-open-docs/open-docs-lint-staged/issues).

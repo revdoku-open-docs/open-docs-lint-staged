@@ -23,7 +23,7 @@ When a new lint-staged version changes behavior, we update the pages and this ta
 
 ## Found an error?
 
-- An error on this site: open an issue in [revdoku-open-docs/lint-staged](https://github.com/revdoku-open-docs/lint-staged/issues).
+- An error on this site: open an issue in [revdoku-open-docs/open-docs-lint-staged](https://github.com/revdoku-open-docs/open-docs-lint-staged/issues).
 - A bug in lint-staged itself: open an issue in [lint-staged/lint-staged](https://github.com/lint-staged/lint-staged/issues). The lint-staged maintainers do not read the issues of this site.
 
 ## Who publishes this site
@@ -39,8 +39,8 @@ This site is yours to take if you want it. We can:
 - change or remove any page;
 - take the site down.
 
-Open an issue in [revdoku-open-docs/lint-staged](https://github.com/revdoku-open-docs/lint-staged/issues), and we will do what you ask.
+Open an issue in [revdoku-open-docs/open-docs-lint-staged](https://github.com/revdoku-open-docs/open-docs-lint-staged/issues), and we will do what you ask.
 
 ## License
 
-lint-staged and its documentation use the MIT License, Copyright (c) 2016 Andrey Okonetchnikov. The text and examples of this site use the MIT License too. The [LICENSE file](https://github.com/revdoku-open-docs/lint-staged/blob/main/LICENSE) of this site's repository contains both notices.
+lint-staged and its documentation use the MIT License, Copyright (c) 2016 Andrey Okonetchnikov. The text and examples of this site use the MIT License too. The [LICENSE file](https://github.com/revdoku-open-docs/open-docs-lint-staged/blob/main/LICENSE) of this site's repository contains both notices.
