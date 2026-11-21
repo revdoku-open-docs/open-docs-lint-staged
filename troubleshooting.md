@@ -34,7 +34,7 @@ A similar message, `could not find any staged files matching configured tasks`, 
 
 With `--diff`, Git cannot use the revisions that you gave. Often, a CI job has a shallow clone without the target branch. See [Run in CI](/guides/ci#github-actions).
 
-## refused to run with files staged with --intent-to-add
+## lint-staged refused to run with files staged with `--intent-to-add`
 
 ```text
 ✖ lint-staged refused to run with files staged with "--intent-to-add":
